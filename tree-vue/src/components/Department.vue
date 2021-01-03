@@ -2,7 +2,7 @@
   <li class="department-node">
       <div class="department">
         <p class="dept-name">{{ departmentName }}</p>
-        <button class="button is-small is-info is-outlined add-dept">부서추가</button>
+        <button v-show="isEditMode" class="button is-small is-info is-outlined add-dept">부서추가</button>
       </div>
       <ul>
         <Department v-for="department in childDepartments" :key="department.deptId" :dpeth="childDepth" />
@@ -23,6 +23,11 @@ export default {
     depth: {
       type: String,
       default: '1'
+    },
+
+    mode: {
+      type: String,
+      default: 'view'
     }
   },
 
@@ -37,6 +42,10 @@ export default {
 
     childDepth() {
       return Number(this.depth) + 1;
+    },
+
+    isEditMode() {
+      return this.mode === 'edit';
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <section id="app" class="section">
     <Mode :mode="mode" @change-mode="changeMode" />
-    <Main />
+    <Main :mode="mode" />
   </section>
 </template>
 

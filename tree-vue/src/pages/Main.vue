@@ -3,7 +3,7 @@
     <input class="input" type="text" v-model="departmentName" placeholder="input department">
     <div>
       <ul>
-        <Department v-for="department in departments" :key="department.deptId" :department="department" depth="1" />
+        <Department v-for="department in departments" :key="department.deptId" :mode="mode" :department="department" depth="1" />
       </ul>
     </div>
   </div>
@@ -17,6 +17,13 @@ export default {
   name: 'Main',
 
   components: { Department },
+
+  props: {
+    mode: {
+      type: String,
+      default: 'view'
+    }
+  },
 
   data() {
     return {
