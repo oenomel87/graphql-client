@@ -3,22 +3,25 @@
     <input class="input" type="text" v-model="departmentName" placeholder="input department">
     <div>
       <ul>
-        <li v-for="department in departments" :key="department.deptId">{{ department.name }}</li>
+        <Department v-for="department in departments" :key="department.deptId" :department="department" depth="1" />
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import graphQLClient from '../../util/graphql-client.js';
+import Department from '../components/Department.vue';
+import graphQLClient from '../util/graphql-client.js';
 
 export default {
   name: 'Main',
 
+  components: { Department },
+
   data() {
     return {
-      departmentName: '',
-      departments: []
+      departments: [],
+      departmentName: ''
     }
   },
 
